@@ -34,5 +34,6 @@
     <string name="ShowAtt">Вывод по аттрибутам</string>
     <string name="TableName">Название таблицы</string>
     <string name="RowName">Название столбца</string>
+    <string name="ChooseQuery">Выберите запрос:</string>
 
 </resources>
