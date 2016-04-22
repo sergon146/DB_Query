@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Warehouse</string>
+    <string name="DocStation">Склад</string>
+    <string name="Query">Выполнить запрос</string>
+    <string name="title_activity_add">AddActivity</string>
+    <string name="viewAddTop">Выберите таблицу</string>
+    <string name="Creator">Creator</string>
+    <string name="Goods">Goods</string>
+    <string name="Stack">Stack</string>
+    <string name="Place">Place</string>
+    <string name="Copyright">copyright © sergon146</string>
+    <string name="CreteQuery">Введите запрос:</string>
+    <string name="CreateQurey">Выполнить запрос</string>
+    <string name="Clear">Очистить</string>
+    <string name="ShowQuery">Вывод запросов</string>
+    <string name="MainCreateQuery">Выполнение запроса</string>
+    <string name="Add">Добавление в таблицу</string>
+    <string name="Edit_Data">Редактирование данных</string>
+    <string name="Delete_Data">Удаление данных</string>
+    <string name="ConstQuery1">Вывести изготовителей, изделий которых нет на стеллаже №</string>
+    <string name="ConstQuery2">Вывести названия стеллажей, на которых нет изделия:</string>
+    <string name="ConstQuery3">Вывести названия стеллажей, на которых нет изделий от производителя:</string>
+    <string name="ConstQuery4">Вывести производителя, имеющего максимальное количество изделий на складе</string>
+    <string name="ConstQuery5">Вывести названия стеллажей, на которых находится изделие:</string>
+    <string name="ConstQuery6">Вывести габаритные размеры стеллажа:</string>
+    <string name="ConstQuery7">Вывести стеллажи, на которых есть изделия всех изготовителей</string>
+    <string name="ConstQuery8">Вывести список организаций, изделия которых расположены на разных стеллажах</string>
+    <string name="ConstQuery9">Вывести список стеллажей, на которых находятся изделия из однородного материала</string>
+    <string name="ConstQuery10">Вывести список организаций, которые расположены в одном городе и изделия которых находятся на складе</string>
+    <string name="Adding">Добавить</string>
+    <string name="Show">Вывод данных</string>
+    <string name="Edit">Редактировать</string>
+    <string name="Delete">Удалить</string>
+    <string name="ShowAtt">Вывод по аттрибутам</string>
+    <string name="TableName">Название таблицы</string>
+    <string name="RowName">Название столбца</string>
+
+</resources>

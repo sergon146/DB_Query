@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="ru.sergon.db_query_cours.ChooseQueryActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:text="@string/DocStation" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView5"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/showQueryAtt"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:onClick="onClick"
+                android:text="@string/ShowAtt"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery1"
+                android:id="@+id/textView3"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:layout_below="@+id/showQueryAtt"
+                android:layout_alignStart="@+id/textView10"
+                android:layout_toStartOf="@+id/query1text" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/query1text"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/showQueryAtt"
+                android:inputType="number|numberSigned|numberDecimal" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Query"
+                android:id="@+id/query1"
+                android:nestedScrollingEnabled="false"
+                android:onClick="onClick"
+                android:layout_below="@+id/textView3"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery2"
+                android:id="@+id/textView6"
+                android:layout_below="@+id/query1"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/nameGoods" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameGoods"
+                android:layout_below="@+id/query1"
+                android:layout_alignParentEnd="true" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query2"
+                android:layout_below="@+id/textView6"
+                android:layout_alignParentEnd="true"
+                android:onClick="onClick"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery3"
+                android:id="@+id/textView2"
+                android:layout_alignBottom="@+id/scrollView5"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="false"
+                android:layout_below="@+id/query2"
+                android:layout_toStartOf="@+id/nameGoods" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameCreator"
+                android:layout_below="@+id/query2"
+                android:layout_alignEnd="@+id/nameGoods" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query3"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/textView2"
+                android:onClick="onClick"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery4"
+                android:id="@+id/textView10"
+                android:layout_alignParentBottom="false"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/query3" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query4"
+                android:layout_alignEnd="@+id/textView"
+                android:layout_below="@+id/textView10"
+                android:onClick="onClick"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery5"
+                android:id="@+id/textView11"
+                android:layout_below="@+id/query4"
+                android:layout_toStartOf="@+id/nameInGoods" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query5"
+                android:layout_below="@+id/textView11"
+                android:onClick="onClick"
+                android:layout_marginBottom="15dp" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/nameInGoods"
+                android:layout_below="@+id/query4"
+                android:layout_alignEnd="@+id/textView10" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery6"
+                android:id="@+id/textView12"
+                android:layout_alignParentBottom="false"
+                android:layout_toStartOf="@+id/textView"
+                android:layout_below="@+id/query5"
+                android:layout_alignEnd="@+id/textView11"
+                android:layout_alignBottom="@+id/stackName" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/stackName"
+                android:layout_alignParentBottom="false"
+                android:layout_alignEnd="@+id/query1text"
+                android:layout_alignStart="@+id/nameCreator"
+                android:layout_below="@+id/query5" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query6"
+                android:layout_below="@+id/stackName"
+                android:layout_alignParentStart="true"
+                android:onClick="onClick"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery7"
+                android:id="@+id/textView13"
+                android:layout_below="@+id/query6" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query7"
+                android:layout_below="@+id/textView13"
+                android:onClick="onClick"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery8"
+                android:id="@+id/textView14"
+                android:layout_below="@+id/query7" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query8"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@+id/textView14"
+                android:onClick="onClick" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery9"
+                android:id="@+id/textView15"
+                android:layout_below="@+id/query8" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query9"
+                android:layout_below="@+id/textView15"
+                android:onClick="onClick"
+                android:layout_marginBottom="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ConstQuery10"
+                android:id="@+id/textView16"
+                android:layout_below="@+id/query9" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/CreateQurey"
+                android:id="@+id/query10"
+                android:layout_below="@+id/textView16"
+                android:onClick="onClick" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
