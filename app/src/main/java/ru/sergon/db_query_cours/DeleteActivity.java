@@ -41,22 +41,22 @@ public class DeleteActivity extends Activity implements View.OnClickListener {
         tb="";
         switch (deleting){
             case 1:
-                name.setText("Goods");
+                name.setText("DELETE FROM Goods");
                 queryText+="goods";
                 tb="goods";
                 break;
             case 2:
-                name.setText("Creator");
+                name.setText("DELETE FROM Creator");
                 queryText+="creator";
                 tb="creator";
                 break;
             case 3:
-                name.setText("Stack");
+                name.setText("DELETE FROM Stack");
                 queryText+="stack";
                 tb="stack";
                 break;
             case 4:
-                name.setText("Place");
+                name.setText("DELETE FROM Place");
                 queryText+="place";
                 tb="place";
                 break;
