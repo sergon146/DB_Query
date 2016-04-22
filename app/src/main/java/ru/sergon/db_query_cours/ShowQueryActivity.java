@@ -38,37 +38,37 @@ public class ShowQueryActivity extends Activity {
             case 1:
                 int stack = intent.getIntExtra("query1",0);
                 qvr.setText("Запрос №1");
-                queryText="SELECT creator.name " +
+                queryText="SELECT creator.name as Название " +
                         "FROM creator " +
                         "WHERE creator._id NOT IN (SELECT id_creator from place where id_stack="+stack+")";
                 break;
             case 2:
                 String nameGoods = intent.getStringExtra("query2");
                 qvr.setText("Запрос №2");
-                queryText="select stack.name from stack " +
+                queryText="select stack.name as Название  from stack " +
                         "where stack._id not in(select stack._id from stack,place,goods "+
                         "where stack._id=place.id_stack and place.id_goods=goods._id and goods.name=\""+nameGoods+"\")";
                 break;
             case 3:
                 String nameCreator = intent.getStringExtra("query3");
                 qvr.setText("Запрос №3");
-                queryText="select stack.name from stack " +
+                queryText="select stack.name as Название from stack " +
                         "where stack._id not in(select stack._id from stack,place,creator "+
                         "where stack._id=place.id_stack and place.id_creator=creator._id and creator.name=\""+nameCreator+"\")";
                 break;
             case 4:
                 qvr.setText("Запрос №4");
-                queryText="select creator.name, sum(place.count) as Count " +
+                queryText="select creator.name as Название, sum(place.count) as Количество " +
                         "from creator, place " +
                         "where creator._id=place.id_creator " +
                         "group by name  " +
-                        "order by Count DESC " +
+                        "order by sum(place.count) DESC " +
                         "Limit 1";
                 break;
             case 5:
                 String nameInGoods = intent.getStringExtra("query5");
                 qvr.setText("Запрос №5");
-                queryText="select distinct stack.name  " +
+                queryText="select distinct stack.name as Название " +
                         "from stack, place, goods " +
                         "where stack._id=place.id_stack and  " +
                         "goods._id=place.id_goods and goods.name=\""+nameInGoods+"\"";
@@ -76,34 +76,34 @@ public class ShowQueryActivity extends Activity {
             case 6:
                 String stackName = intent.getStringExtra("query6");
                 qvr.setText("Запрос №6");
-                queryText="select max(goods.length), max(goods.height), max(goods.width)"+
+                queryText="select max(goods.length) as Длина, max(goods.height) as Высота, max(goods.width) as Ширина"+
                         "from goods,stack,place " +
                         "where stack._id=place.id_stack and goods._id=place.id_goods and  stack.name=\""+stackName+"\"";
                 break;
             case 7:
                 qvr.setText("Запрос №7");
-                queryText="select stack.name from stack, creator, place " +
+                queryText="select stack.name as Название from stack, creator, place " +
                         "where stack._id=place.id_stack and creator._id=place.id_creator " +
                         "group by stack.name " +
                         "having count(distinct creator.name)=(select count(_id) from creator)";
                 break;
             case 8:
                 qvr.setText("Запрос №8");
-                queryText="select creator.name from stack, creator, place " +
+                queryText="select creator.name as Название from stack, creator, place " +
                         "where stack._id=place.id_stack and creator._id=place.id_creator " +
                         "group by creator.name " +
                         "having count(stack.name)>1";
                 break;
             case 9:
                 qvr.setText("Запрос №9");
-                queryText="select stack.name from stack,place, goods " +
+                queryText="select stack.name as Название from stack,place, goods " +
                         "where stack._id=place.id_stack and goods._id=place.id_goods " +
                         "group by stack.name,goods.material,\"2\" " +
                         "having count(goods.material)>1";
                 break;
             case 10:
                 qvr.setText("Запрос №10");
-                queryText="select c.name, c.city \n" +
+                queryText="select c.name as Название, c.city as Город \n" +
                         "from place,creator as c \n" +
                         "where (SELECT count(d.city) from creator AS d WHERE c.city = d.city)>1 and c._id=place.id_creator \n" +
                         "group by name";

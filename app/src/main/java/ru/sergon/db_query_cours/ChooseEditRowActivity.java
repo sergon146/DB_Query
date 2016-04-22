@@ -33,30 +33,37 @@ public class ChooseEditRowActivity extends Activity implements View.OnClickListe
         String queryText="select * from ";
         switch (editing){
             case 1:
-                name.setText("Goods");
+                name.setText("Выберете товар для редактирования");
                 queryText+="goods";
                 break;
             case 2:
-                name.setText("Creator");
+                name.setText("Выберете изготовителя для редактирования");
                 queryText+="creator";
                 break;
             case 3:
-                name.setText("Stack");
+                name.setText("Выберете стеллаж для редактирования");
                 queryText+="stack";
                 break;
             case 4:
-                name.setText("Place");
+                name.setText("Выберете расположение для редоактирования");
                 queryText+="place";
                 break;
         }
         Cursor cursor1 = db.rawQuery(queryText, null);
 
         for (int i = 0; i < cursor1.getColumnCount(); i++) {
-            TextView nameCol = new TextView(this);
-            nameCol.setText(" " + cursor1.getColumnName(i) + " ");
-            nameCol.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            nameCol.setTextSize(23);
-            rowName.addView(nameCol);
+            if (i!=0) {
+                TextView nameCol = new TextView(this);
+                nameCol.setText(" " + cursor1.getColumnName(i) + " ");
+                nameCol.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                nameCol.setTextSize(23);
+                rowName.addView(nameCol);
+            }  else {
+                TextView nameCol = new TextView(this);
+                nameCol.setText(" " + cursor1.getColumnName(i) + " ");
+                nameCol.setVisibility(View.GONE);
+                rowName.addView(nameCol);
+            }
         }
         int rowID = 0;
         while (cursor1.moveToNext()) {
@@ -66,12 +73,20 @@ public class ChooseEditRowActivity extends Activity implements View.OnClickListe
             row.setOnClickListener(this);
             table.addView(row);
             for (int j = 0; j < cursor1.getColumnCount(); j++) {
-                TextView item = new TextView(this);
-                item.setText(" " + cursor1.getString(j) + " ");
-                item.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                item.setTextSize(23);
-                item.setId(j);
-                row.addView(item);
+                if (j!=0) {
+                    TextView item = new TextView(this);
+                    item.setText(" " + cursor1.getString(j) + " ");
+                    item.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    item.setTextSize(23);
+                    item.setId(j);
+                    row.addView(item);
+                }  else{
+                    TextView item = new TextView(this);
+                    item.setText(" " + cursor1.getString(j) + " ");
+                    item.setVisibility(View.GONE);
+                    item.setId(j);
+                    row.addView(item);
+                }
             }
         }
         cursor1.close();

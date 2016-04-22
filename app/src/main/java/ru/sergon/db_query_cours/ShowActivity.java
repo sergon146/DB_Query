@@ -32,42 +32,41 @@ public class ShowActivity extends Activity {
         String queryText="select * from ";
         switch (showing){
             case 1:
-                name.setText("Show Goods");
+                name.setText("Все товары");
                 queryText+="goods";
                 break;
             case 2:
-                name.setText("Show Creator");
+                name.setText("Все изготовители");
                 queryText+="creator";
                 break;
             case 3:
-                name.setText("Show Stack");
+                name.setText("Все стеллажи");
                 queryText+="stack";
                 break;
             case 4:
-                name.setText("Show Place");
+                name.setText("Все расположения");
                 queryText+="place";
                 break;
 
         }
         Cursor cursor1 = db.rawQuery(queryText, null);
-        for (int i = 0; i < cursor1.getColumnCount(); i++) {
-            TextView nameCol = new TextView(this);
-            nameCol.setText(" " + cursor1.getColumnName(i) + " ");
-            nameCol.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            nameCol.setTextSize(23);
-            rowName.addView(nameCol);
-        }
         int rowID = 0;
         while (cursor1.moveToNext()) {
             rowID++;
             TableRow row = new TableRow(this);
             table.addView(row, rowID);
             for (int j = 0; j < cursor1.getColumnCount(); j++) {
-                TextView item = new TextView(this);
-                item.setText(" " + cursor1.getString(j) + " ");
-                item.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                item.setTextSize(23);
-                row.addView(item, j);
+                if (j!=0) {
+                    TextView item = new TextView(this);
+                    item.setText(" " + cursor1.getString(j) + " ");
+                    item.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    item.setTextSize(23);
+                    row.addView(item, j);
+                } else{
+                    TextView item = new TextView(this);
+                    item.setVisibility(View.GONE);
+                    row.addView(item, j);
+                }
             }
         }
         cursor1.close();

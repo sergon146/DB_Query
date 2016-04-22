@@ -62,13 +62,6 @@ public class DeleteActivity extends Activity implements View.OnClickListener {
                 break;
         }
         Cursor cursor1 = db.rawQuery(queryText, null);
-        for (int i = 0; i < cursor1.getColumnCount(); i++) {
-            TextView nameCol = new TextView(this);
-            nameCol.setText(" " + cursor1.getColumnName(i) + " ");
-            nameCol.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            nameCol.setTextSize(23);
-            rowName.addView(nameCol);
-        }
         int rowID = 0;
         while (cursor1.moveToNext()) {
             rowID++;

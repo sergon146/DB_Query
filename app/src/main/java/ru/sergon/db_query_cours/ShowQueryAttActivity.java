@@ -46,24 +46,19 @@ public class ShowQueryAttActivity extends AppCompatActivity {
         queryText="SELECT "+column.getText().toString()+" FROM "+tablen.getText().toString();
         try {
             cursor = db.rawQuery(queryText, null);
-            for (int i = 0; i < cursor.getColumnCount(); i++) {
-                TextView nameCol = new TextView(this);
-                nameCol.setText(" " + cursor.getColumnName(i) + " ");
-                nameCol.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                nameCol.setTextSize(23);
-                rowName.addView(nameCol);
-            }
-            int rowID = 0;
+            int rowID = 1;
             while (cursor.moveToNext()) {
                 rowID++;
                 TableRow row = new TableRow(this);
                 table.addView(row, rowID);
                 for (int j = 0; j < cursor.getColumnCount(); j++) {
-                    TextView item = new TextView(this);
-                    item.setText(" " + cursor.getString(j) + " ");
-                    item.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                    item.setTextSize(23);
-                    row.addView(item, j);
+                    if (j!=0) {
+                        TextView item = new TextView(this);
+                        item.setText(" " + cursor.getString(j) + " ");
+                        item.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                        item.setTextSize(23);
+                        row.addView(item, j);
+                    }
                 }
             }
             cursor.close();

@@ -39,19 +39,19 @@ public class EditActivity extends Activity {
         String queryText= "SELECT * from ";
         switch (table){
             case 1:
-                name.setText("Edit Goods");
+                name.setText("Редактирование товаров");
                 queryText+="goods";
                 break;
             case 2:
-                name.setText("Edit Creator");
+                name.setText("Редактирвоание изготовителей");
                 queryText+="creator";
                 break;
             case 3:
-                name.setText("Edit Stack");
+                name.setText("Редактирование стеллажей");
                 queryText+="stack";
                 break;
             case 4:
-                name.setText("Edit Place");
+                name.setText("Редактирование расположений");
                 queryText+="place";
                 break;
         }
@@ -60,17 +60,19 @@ public class EditActivity extends Activity {
         count = cursor1.getColumnCount();
         cursor1.moveToFirst();
         for (int i = 0; i < cursor1.getColumnCount(); i++) {
-            TextView nameColl = new TextView(this);
-            EditText innerr = new EditText(this);
-            nameColl.setText(" " + cursor1.getColumnName(i) + ": ");
-            nameColl.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            nameColl.setTextSize(20);
-            nameColl.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            innerr.setId(i);
-            layout.addView(nameColl);
-            innerr.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            innerr.setText(cursor1.getString(i));
-            layout.addView(innerr);
+            if (i != 0) {
+                TextView nameColl = new TextView(this);
+                EditText innerr = new EditText(this);
+                nameColl.setText(" " + cursor1.getColumnName(i) + ": ");
+                nameColl.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                nameColl.setTextSize(20);
+                nameColl.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                innerr.setId(i);
+                layout.addView(nameColl);
+                innerr.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                innerr.setText(cursor1.getString(i));
+                layout.addView(innerr);
+            }
         }
         cursor1.close();
     }
@@ -121,21 +123,25 @@ public class EditActivity extends Activity {
         EditText edit;
         cursor1.moveToFirst();
         for (int i =0; i<count;i++){
-            pool = cursor1.getColumnName(i);
-            if (i==count-1) queryText+=pool+") VALUES (";
-            else queryText+=pool+", ";
+            if (i!=0) {
+                pool = cursor1.getColumnName(i);
+                if (i == count - 1) queryText += pool + ") VALUES (";
+                else queryText += pool + ", ";
+            }
         }
         for (int i = 0; i<count;i++){
-            int fld = cursor1.getType(i);
-            edit = (EditText) findViewById(i);
-            pool =  edit.getText().toString();
+            if (i!=0) {
+                int fld = cursor1.getType(i);
+                edit = (EditText) findViewById(i);
+                pool = edit.getText().toString();
 
-            if (fld == Cursor.FIELD_TYPE_STRING){
-                if (i==count-1) queryText+="\""+pool+"\""+");";
-                else  queryText+="\""+pool+"\""+", ";
-            } else if (fld != Cursor.FIELD_TYPE_NULL){
-                if (i==count-1) queryText+=pool+");";
-                else  queryText+=pool+", ";
+                if (fld == Cursor.FIELD_TYPE_STRING) {
+                    if (i == count - 1) queryText += "\"" + pool + "\"" + ");";
+                    else queryText += "\"" + pool + "\"" + ", ";
+                } else if (fld != Cursor.FIELD_TYPE_NULL) {
+                    if (i == count - 1) queryText += pool + ");";
+                    else queryText += pool + ", ";
+                }
             }
         }
         try {

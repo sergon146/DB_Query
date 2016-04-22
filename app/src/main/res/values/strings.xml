@@ -4,10 +4,10 @@
     <string name="Query">Выполнить запрос</string>
     <string name="title_activity_add">AddActivity</string>
     <string name="viewAddTop">Выберите таблицу</string>
-    <string name="Creator">Creator</string>
-    <string name="Goods">Goods</string>
-    <string name="Stack">Stack</string>
-    <string name="Place">Place</string>
+    <string name="Creator">Изготовитель</string>
+    <string name="Goods">Товары</string>
+    <string name="Stack">Стеллаж</string>
+    <string name="Place">Расположение</string>
     <string name="Copyright">copyright © sergon146</string>
     <string name="CreteQuery">Введите запрос:</string>
     <string name="CreateQurey">Выполнить запрос</string>

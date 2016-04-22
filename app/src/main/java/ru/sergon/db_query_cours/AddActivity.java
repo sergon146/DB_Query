@@ -35,19 +35,19 @@ public class AddActivity extends Activity {
         adding = intent.getIntExtra("addT",0);
         switch (adding){
             case 1:
-                name.setText("Add to Goods");
+                name.setText("Добавление товара");
                 queryText+="goods";
                 break;
             case 2:
-                name.setText("Add to Creator");
+                name.setText("Добавление изготовителя");
                 queryText+="creator";
                 break;
             case 3:
-                name.setText("Add to Stack");
+                name.setText("Добавление стеллажа");
                 queryText+="stack";
                 break;
             case 4:
-                name.setText("Add to Place");
+                name.setText("Добавления расположения");
                 queryText+="place";
                 break;
         }
@@ -57,15 +57,24 @@ public class AddActivity extends Activity {
         for (int i = 0; i < cursor1.getColumnCount(); i++) {
             TextView nameCol = new TextView(this);
             EditText inner = new EditText(this);
-            if (i==0) inner.setText("null");
-            nameCol.setText(" " + cursor1.getColumnName(i) + ": ");
-            nameCol.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            nameCol.setTextSize(20);
-            nameCol.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            layout.addView(nameCol);
-            inner.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            inner.setId(i);
-            layout.addView(inner);
+            if (i!=0) {
+                nameCol.setText(" " + cursor1.getColumnName(i) + ": ");
+                nameCol.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                nameCol.setTextSize(20);
+                nameCol.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                layout.addView(nameCol);
+                inner.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                inner.setId(i);
+                layout.addView(inner);
+            }else {
+                inner.setText("null");
+                inner.setVisibility(View.GONE);
+                nameCol.setVisibility(View.GONE);
+                layout.addView(nameCol);
+                inner.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                inner.setId(i);
+                layout.addView(inner);
+            }
         }
         cursor1.close();
     }
