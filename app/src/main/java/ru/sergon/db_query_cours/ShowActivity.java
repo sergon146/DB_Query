@@ -32,19 +32,19 @@ public class ShowActivity extends Activity {
         String queryText="select * from ";
         switch (showing){
             case 1:
-                name.setText("Goods");
+                name.setText("Show Goods");
                 queryText+="goods";
                 break;
             case 2:
-                name.setText("Creator");
+                name.setText("Show Creator");
                 queryText+="creator";
                 break;
             case 3:
-                name.setText("Stack");
+                name.setText("Show Stack");
                 queryText+="stack";
                 break;
             case 4:
-                name.setText("Place");
+                name.setText("Show Place");
                 queryText+="place";
                 break;
 

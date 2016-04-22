@@ -35,19 +35,19 @@ public class AddActivity extends Activity {
         adding = intent.getIntExtra("addT",0);
         switch (adding){
             case 1:
-                name.setText("Goods");
+                name.setText("Add to Goods");
                 queryText+="goods";
                 break;
             case 2:
-                name.setText("Creator");
+                name.setText("Add to Creator");
                 queryText+="creator";
                 break;
             case 3:
-                name.setText("Stack");
+                name.setText("Add to Stack");
                 queryText+="stack";
                 break;
             case 4:
-                name.setText("Place");
+                name.setText("Add to Place");
                 queryText+="place";
                 break;
         }

@@ -39,19 +39,19 @@ public class EditActivity extends Activity {
         String queryText= "SELECT * from ";
         switch (table){
             case 1:
-                name.setText("Goods");
+                name.setText("Edit Goods");
                 queryText+="goods";
                 break;
             case 2:
-                name.setText("Creator");
+                name.setText("Edit Creator");
                 queryText+="creator";
                 break;
             case 3:
-                name.setText("Stack");
+                name.setText("Edit Stack");
                 queryText+="stack";
                 break;
             case 4:
-                name.setText("Place");
+                name.setText("Edit Place");
                 queryText+="place";
                 break;
         }
