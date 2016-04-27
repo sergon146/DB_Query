@@ -9,20 +9,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ru.sergon.db_query_cours.ChooseTableActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/viewAddTop"
-        android:id="@+id/viewAddTop"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/chooseGoods"
         android:layout_marginTop="26dp"
-        android:layout_below="@+id/viewAddTop"
         android:layout_centerHorizontal="true"
         android:onClick="onClick"
         android:text="@string/Goods" />

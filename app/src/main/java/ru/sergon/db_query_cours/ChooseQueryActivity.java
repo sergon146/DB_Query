@@ -16,6 +16,8 @@ public class ChooseQueryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_query);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Запросы");
     }
 
     public void onClick(View view) {

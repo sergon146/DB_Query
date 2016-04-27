@@ -23,8 +23,6 @@ import java.sql.SQLException;
 public class ShowQueryAttActivity extends AppCompatActivity {
     DataBaseHelper myDbHelper;
     SQLiteDatabase db;
-    String[] data = {"Table", "goods", "creator" ,"stack" , "place"};
-    String[] rowdata = {};
     Cursor cursor;
     String queryText;
 
@@ -32,6 +30,8 @@ public class ShowQueryAttActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_query_att);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Вывод по аттрибутам");
         myDbHelper = new DataBaseHelper(this);
         db = myDbHelper.getReadableDatabase();
     }

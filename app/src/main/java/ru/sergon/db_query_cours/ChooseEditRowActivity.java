@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ChooseEditRowActivity extends Activity implements View.OnClickListener {
+public class ChooseEditRowActivity extends AppCompatActivity implements View.OnClickListener {
     TableLayout table;
     Intent intent;
     int editing;
@@ -21,6 +22,8 @@ public class ChooseEditRowActivity extends Activity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_edit_row);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Редактирование");
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
         SQLiteDatabase db = myDbHelper.getReadableDatabase();
         intent = getIntent();
@@ -30,23 +33,25 @@ public class ChooseEditRowActivity extends Activity implements View.OnClickListe
         table.removeAllViews();
         TableRow rowName = new TableRow(this);
         table.addView(rowName, 0);
-        String queryText="select * from ";
+        String queryText="";
         switch (editing){
             case 1:
                 name.setText("Выберете товар для редактирования");
-                queryText+="goods";
+                queryText="select _id, name as Название, material as Материал, " +
+                        "length as Длина,height as Высота, width as Ширина from goods";
                 break;
             case 2:
                 name.setText("Выберете изготовителя для редактирования");
-                queryText+="creator";
+                queryText="select _id, name as Название, city as Город from creator";
                 break;
             case 3:
                 name.setText("Выберете стеллаж для редактирования");
-                queryText+="stack";
+                queryText="select _id, name as Название, map as Расположение from stack";
                 break;
             case 4:
                 name.setText("Выберете расположение для редоактирования");
-                queryText+="place";
+                queryText="select _id, id_goods as 'Номер товара', id_creator as 'Номер изготовителя', " +
+                        "id_stack as 'Номер стеллажа', count as Количество from place";
                 break;
         }
         Cursor cursor1 = db.rawQuery(queryText, null);

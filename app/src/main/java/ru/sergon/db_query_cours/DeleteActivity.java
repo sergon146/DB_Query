@@ -1,6 +1,5 @@
 package ru.sergon.db_query_cours;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class DeleteActivity extends Activity implements View.OnClickListener {
+public class DeleteActivity extends AppCompatActivity implements View.OnClickListener {
     DataBaseHelper myDbHelper;
     SQLiteDatabase db;
     AlertDialog alert;
@@ -29,6 +29,8 @@ public class DeleteActivity extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Удаление");
         myDbHelper = new DataBaseHelper(this);
         db = myDbHelper.getReadableDatabase();
         Intent intent = getIntent();
@@ -92,7 +94,7 @@ public class DeleteActivity extends Activity implements View.OnClickListener {
         idd=view.getId();
         AlertDialog.Builder builder = new AlertDialog.Builder(DeleteActivity.this);
         builder.setTitle("Удаление данных")
-                .setMessage("Вы действительно ходите удалить данную строку (ID="+delID+")?\n\n(Восстановление будет невозможно)")
+                .setMessage("Вы действительно ходите удалить данную строку (ID="+idd+")?\n\n(Восстановление будет невозможно)")
                 .setCancelable(true)
                 .setPositiveButton("Удалить",
                         new DialogInterface.OnClickListener() {

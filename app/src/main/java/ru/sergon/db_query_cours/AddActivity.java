@@ -1,12 +1,12 @@
 package ru.sergon.db_query_cours;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 
 
-public class AddActivity extends Activity {
+public class AddActivity extends AppCompatActivity {
     DataBaseHelper myDbHelper;
     SQLiteDatabase db;
     int adding;
@@ -26,9 +26,10 @@ public class AddActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+        setTitle("Добавление");
         myDbHelper = new DataBaseHelper(this);
         db = myDbHelper.getReadableDatabase();
-        String queryText="select * from ";
+        String queryText="";
         TextView name = (TextView) findViewById(R.id.addName);
         LinearLayout layout = (LinearLayout) findViewById(R.id.addLayout);
         Intent intent = getIntent();
@@ -36,19 +37,21 @@ public class AddActivity extends Activity {
         switch (adding){
             case 1:
                 name.setText("Добавление товара");
-                queryText+="goods";
+                queryText="select _id,name as Название, material as Материал, " +
+                        "length as Длина,height as Высота, width as Ширина from goods";
                 break;
             case 2:
                 name.setText("Добавление изготовителя");
-                queryText+="creator";
+                queryText="select _id,name as Название, city as Город from creator";
                 break;
             case 3:
                 name.setText("Добавление стеллажа");
-                queryText+="stack";
+                queryText="select _id, name as Название, map as Расположение from stack";
                 break;
             case 4:
                 name.setText("Добавления расположения");
-                queryText+="place";
+                queryText="select _id,id_goods as 'Номер товара', id_creator as 'Номер изготовителя', " +
+                        "id_stack as 'Номер стеллажа', count as Количество from place";
                 break;
         }
         Cursor cursor1 = db.rawQuery(queryText, null);

@@ -1,23 +1,21 @@
 package ru.sergon.db_query_cours;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class MainActivity  extends Activity {
+public class MainActivity  extends AppCompatActivity {
     Intent intent;
-    String triggerText;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Склад");
         DataBaseHelper myDbHelper = new DataBaseHelper(this);
-        SQLiteDatabase db = myDbHelper.getWritableDatabase();
 
         try {
             myDbHelper.createDataBase();

@@ -1,12 +1,12 @@
 package ru.sergon.db_query_cours;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class EditActivity extends Activity {
+public class EditActivity extends AppCompatActivity {
     Intent intent;
     DataBaseHelper myDbHelper;
     SQLiteDatabase db;
@@ -27,6 +27,8 @@ public class EditActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle("Редактирование");
         myDbHelper = new DataBaseHelper(this);
         db = myDbHelper.getReadableDatabase();
         TextView name = (TextView) findViewById(R.id.editName);
@@ -36,23 +38,25 @@ public class EditActivity extends Activity {
         intent = getIntent();
         id = intent.getStringExtra("editrow");
 
-        String queryText= "SELECT * from ";
+        String queryText= "";
         switch (table){
             case 1:
-                name.setText("Редактирование товаров");
-                queryText+="goods";
+                name.setText("Редактирование товара");
+                queryText="select _id,name as Название, material as Материал, " +
+                        "length as Длина,height as Высота, width as Ширина from goods";
                 break;
             case 2:
-                name.setText("Редактирвоание изготовителей");
-                queryText+="creator";
+                name.setText("Редактирвоание изготовителя");
+                queryText="select _id,name as Название, city as Город from creator";
                 break;
             case 3:
-                name.setText("Редактирование стеллажей");
-                queryText+="stack";
+                name.setText("Редактирование стеллажа");
+                queryText="select _id, name as Название, map as Расположение from stack";
                 break;
             case 4:
-                name.setText("Редактирование расположений");
-                queryText+="place";
+                name.setText("Редактирование расположения");
+                queryText="select _id,id_goods as 'Номер товара', id_creator as 'Номер изготовителя', " +
+                        "id_stack as 'Номер стеллажа', count as Количество from place";
                 break;
         }
         queryText+=" WHERE _id= "+id;
