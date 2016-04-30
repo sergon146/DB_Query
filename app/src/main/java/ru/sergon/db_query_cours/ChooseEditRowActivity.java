@@ -1,6 +1,5 @@
 package ru.sergon.db_query_cours;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -50,8 +49,9 @@ public class ChooseEditRowActivity extends AppCompatActivity implements View.OnC
                 break;
             case 4:
                 name.setText("Выберете расположение для редоактирования");
-                queryText="select _id, id_goods as 'Номер товара', id_creator as 'Номер изготовителя', " +
-                        "id_stack as 'Номер стеллажа', count as Количество from place";
+                queryText="select place._id, goods.name as 'Товар', creator.name as 'Изготовитель', " +
+                        "stack.name as 'Стеллаж', count as Количество from place, goods, stack, creator " +
+                        "where place.id_goods=goods._id and place.id_creator = creator._id and place.id_stack=stack._id";
                 break;
         }
         Cursor cursor1 = db.rawQuery(queryText, null);

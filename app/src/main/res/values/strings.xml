@@ -28,12 +28,13 @@
     <string name="ConstQuery9">Вывести список стеллажей, на которых находятся изделия из однородного материала</string>
     <string name="ConstQuery10">Вывести список организаций, которые расположены в одном городе и изделия которых находятся на складе</string>
     <string name="Adding">Добавить</string>
+    <string name="Value">Значение</string>
     <string name="Show">Вывод данных</string>
     <string name="Edit">Редактировать</string>
     <string name="Delete">Удалить</string>
     <string name="ShowAtt">Вывод по аттрибутам</string>
-    <string name="TableName">Название таблицы</string>
-    <string name="RowName">Название столбца</string>
+    <string name="TableName">Таблица</string>
+    <string name="RowName">Столбец</string>
     <string name="ChooseQuery">Выберите запрос:</string>
 
 </resources>

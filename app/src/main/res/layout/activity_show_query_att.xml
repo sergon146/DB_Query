@@ -11,20 +11,6 @@
     android:orientation="horizontal"
     android:weightSum="1">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/showAttTable"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/showAttColumn"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentEnd="true" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,40 +19,63 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/tableSpin"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/RowName"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/showAttTable"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/rowSpinText"
+        android:layout_below="@+id/tableSpin"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/rowSpin"
+        android:layout_below="@+id/rowSpinText"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible"
+        android:layout_marginBottom="15dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/valueText"
+        android:layout_alignParentStart="true"
+        android:inputType="text"
+        android:layout_below="@+id/rowSpin"
+        android:visibility="invisible"
+        android:hint="@string/Value" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/CreateQurey"
         android:id="@+id/showAttButton"
-        android:layout_below="@+id/showAttColumn"
-        android:layout_alignParentStart="true"
-        android:onClick="onClick" />
+        android:onClick="onClick"
+        android:layout_below="@+id/valueText"
+        android:layout_alignEnd="@+id/horizontalScrollView4"
+        android:visibility="invisible" />
 
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/horizontalScrollView4"
-        android:layout_below="@+id/showAttButton">
+        android:layout_below="@+id/showAttButton"
+        android:layout_alignParentEnd="true">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/scrollView6"
-            android:layout_below="@+id/showAttButton" >
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/showAttLayout"></TableLayout>
-        </ScrollView>
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/showAttLayout"></TableLayout>
     </HorizontalScrollView>
 
 </RelativeLayout>

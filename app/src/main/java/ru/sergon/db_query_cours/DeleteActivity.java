@@ -20,7 +20,6 @@ public class DeleteActivity extends AppCompatActivity implements View.OnClickLis
     SQLiteDatabase db;
     AlertDialog alert;
     int idd;
-    String delID;
     String tb;
     Context context;
     TableLayout table;
@@ -43,41 +42,40 @@ public class DeleteActivity extends AppCompatActivity implements View.OnClickLis
         tb="";
         switch (deleting){
             case 1:
-                name.setText("DELETE FROM Goods");
-                queryText+="goods";
+                name.setText("Удаление товара");
+                queryText="select _id, name as Название, material as Материал, " +
+                        "length as Длина,height as Высота, width as Ширина from goods";
                 tb="goods";
                 break;
             case 2:
-                name.setText("DELETE FROM Creator");
-                queryText+="creator";
+                name.setText("Удаление изготовителя");
+                queryText="select _id, name as Название, city as Город from creator";
                 tb="creator";
                 break;
             case 3:
-                name.setText("DELETE FROM Stack");
-                queryText+="stack";
+                name.setText("Удаление стеллажа");
+                queryText="select _id, name as Название, map as Расположение from stack";
                 tb="stack";
                 break;
             case 4:
-                name.setText("DELETE FROM Place");
-                queryText+="place";
+                name.setText("Удаление расположения");
+                queryText="select place._id, goods.name as 'Товар', creator.name as 'Изготовитель', " +
+                        "stack.name as 'Стеллаж', count as Количество from place, goods, stack, creator " +
+                        "where place.id_goods=goods._id and place.id_creator = creator._id and place.id_stack=stack._id";
                 tb="place";
                 break;
         }
         Cursor cursor1 = db.rawQuery(queryText, null);
-        int rowID = 0;
         while (cursor1.moveToNext()) {
-            rowID++;
             TableRow row = new TableRow(this);
-            row.setId(rowID);
+            row.setId(Integer.parseInt(cursor1.getString(0)));
             row.setOnClickListener(this);
             table.addView(row);
-            for (int j = 0; j < cursor1.getColumnCount(); j++) {
-                if (j==0) delID=cursor1.getString(j);
+            for (int j = 1; j < cursor1.getColumnCount(); j++) {
                 TextView item = new TextView(this);
                 item.setText(" " + cursor1.getString(j) + " ");
                 item.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 item.setTextSize(23);
-                item.setId(j);
                 row.addView(item);
 
             }
@@ -94,12 +92,12 @@ public class DeleteActivity extends AppCompatActivity implements View.OnClickLis
         idd=view.getId();
         AlertDialog.Builder builder = new AlertDialog.Builder(DeleteActivity.this);
         builder.setTitle("Удаление данных")
-                .setMessage("Вы действительно ходите удалить данную строку (ID="+idd+")?\n\n(Восстановление будет невозможно)")
+                .setMessage("Вы действительно ходите удалить выбранные данные?\n\n(Восстановление будет невозможно)")
                 .setCancelable(true)
                 .setPositiveButton("Удалить",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                db.execSQL("DELETE FROM "+tb+" WHERE _id="+delID);
+                                db.execSQL("DELETE FROM "+tb+" WHERE _id="+idd);
                                 Toast.makeText(context, "Успешно удалено",
                                         Toast.LENGTH_LONG).show();
                                 table.removeViewAt(idd);
