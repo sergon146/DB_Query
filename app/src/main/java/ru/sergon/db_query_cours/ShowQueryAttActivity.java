@@ -182,7 +182,6 @@ public class ShowQueryAttActivity extends AppCompatActivity {
                     break;
             }
             queryText+="= '"+colT.getText().toString()+"'";
-            Log.d("qvr", queryText);
             cursor = db.rawQuery(queryText, null);
             while (cursor.moveToNext()) {
                 TableRow row = new TableRow(this);

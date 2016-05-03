@@ -50,15 +50,15 @@
                 android:textSize="16sp"
                 android:layout_below="@+id/showQueryAtt"
                 android:layout_alignStart="@+id/textView10"
-                android:layout_toStartOf="@+id/query1text" />
+                android:layout_toStartOf="@+id/stack" />
 
-            <EditText
-                android:layout_width="50dp"
+            <Spinner
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/query1text"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/showQueryAtt"
-                android:inputType="number|numberSigned|numberDecimal" />
+                android:id="@+id/stack"
+                android:layout_above="@+id/query1"
+                android:layout_alignEnd="@+id/nameGoods"
+                android:layout_below="@+id/showQueryAtt" />
 
             <Button
                 android:layout_width="match_parent"
@@ -78,23 +78,25 @@
                 android:id="@+id/textView6"
                 android:layout_below="@+id/query1"
                 android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/nameGoods" />
+                android:layout_toStartOf="@+id/nameGoods"
+                android:textAlignment="center" />
 
-            <EditText
-                android:layout_width="150dp"
+            <Spinner
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/nameGoods"
-                android:layout_below="@+id/query1"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:layout_above="@+id/query2"
+                android:layout_below="@+id/query1" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/CreateQurey"
                 android:id="@+id/query2"
-                android:layout_below="@+id/textView6"
-                android:layout_alignParentEnd="true"
                 android:onClick="onClick"
+                android:layout_below="@+id/textView6"
+                android:layout_alignEnd="@+id/nameGoods"
                 android:layout_marginBottom="15dp" />
 
             <TextView
@@ -106,14 +108,17 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="false"
                 android:layout_below="@+id/query2"
-                android:layout_toStartOf="@+id/nameGoods" />
+                android:layout_toStartOf="@+id/nameGoods"
+                android:textAlignment="center" />
 
-            <EditText
-                android:layout_width="150dp"
+            <Spinner
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/nameCreator"
-                android:layout_below="@+id/query2"
-                android:layout_alignEnd="@+id/nameGoods" />
+                android:layout_alignEnd="@+id/nameGoods"
+                android:layout_toEndOf="@+id/textView2"
+                android:layout_alignTop="@+id/textView2"
+                android:layout_above="@+id/query3" />
 
             <Button
                 android:layout_width="match_parent"
@@ -126,13 +131,14 @@
                 android:layout_marginBottom="15dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ConstQuery4"
                 android:id="@+id/textView10"
                 android:layout_alignParentBottom="false"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/query3" />
+                android:layout_below="@+id/query3"
+                android:textAlignment="center"
+                android:layout_alignParentEnd="true" />
 
             <Button
                 android:layout_width="match_parent"
@@ -150,7 +156,8 @@
                 android:text="@string/ConstQuery5"
                 android:id="@+id/textView11"
                 android:layout_below="@+id/query4"
-                android:layout_toStartOf="@+id/nameInGoods" />
+                android:layout_toStartOf="@+id/nameInGoods"
+                android:textAlignment="center" />
 
             <Button
                 android:layout_width="match_parent"
@@ -161,32 +168,31 @@
                 android:onClick="onClick"
                 android:layout_marginBottom="15dp" />
 
-            <EditText
+            <Spinner
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/nameInGoods"
                 android:layout_below="@+id/query4"
-                android:layout_alignEnd="@+id/textView10" />
+                android:layout_alignParentEnd="true" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ConstQuery6"
                 android:id="@+id/textView12"
-                android:layout_alignParentBottom="false"
                 android:layout_toStartOf="@+id/textView"
                 android:layout_below="@+id/query5"
-                android:layout_alignEnd="@+id/textView11"
-                android:layout_alignBottom="@+id/stackName" />
+                android:textAlignment="center"
+                android:layout_alignEnd="@+id/textView11" />
 
-            <EditText
+            <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/stackName"
-                android:layout_alignParentBottom="false"
-                android:layout_alignEnd="@+id/query1text"
-                android:layout_alignStart="@+id/nameCreator"
-                android:layout_below="@+id/query5" />
+                android:layout_below="@+id/query5"
+                android:layout_toEndOf="@+id/textView12"
+                android:layout_alignStart="@+id/nameInGoods"
+                android:layout_alignBottom="@+id/textView12" />
 
             <Button
                 android:layout_width="match_parent"
@@ -203,7 +209,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ConstQuery7"
                 android:id="@+id/textView13"
-                android:layout_below="@+id/query6" />
+                android:layout_below="@+id/query6"
+                android:textAlignment="center" />
 
             <Button
                 android:layout_width="match_parent"
@@ -219,7 +226,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ConstQuery8"
                 android:id="@+id/textView14"
-                android:layout_below="@+id/query7" />
+                android:layout_below="@+id/query7"
+                android:textAlignment="center" />
 
             <Button
                 android:layout_width="match_parent"
@@ -235,7 +243,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ConstQuery9"
                 android:id="@+id/textView15"
-                android:layout_below="@+id/query8" />
+                android:layout_below="@+id/query8"
+                android:textAlignment="center" />
 
             <Button
                 android:layout_width="match_parent"
@@ -251,7 +260,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/ConstQuery10"
                 android:id="@+id/textView16"
-                android:layout_below="@+id/query9" />
+                android:layout_below="@+id/query9"
+                android:textAlignment="center" />
 
             <Button
                 android:layout_width="match_parent"

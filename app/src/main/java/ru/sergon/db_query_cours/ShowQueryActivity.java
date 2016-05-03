@@ -39,10 +39,11 @@ public class ShowQueryActivity extends AppCompatActivity {
         TableRow rowName = (TableRow) findViewById(R.id.showNameRow);
         switch (counts){
             case 1:
-                int stack = intent.getIntExtra("query1",0);
+                String stack = intent.getStringExtra("query1");
                 queryText="SELECT creator.name as Название " +
                         "FROM creator " +
-                        "WHERE creator._id NOT IN (SELECT id_creator from place where id_stack="+stack+")";
+                        "WHERE creator.name NOT IN (SELECT creator.name from creator,place,stack where place.id_stack=stack._id and place.id_creator=creator._id " +
+                        "and stack.name='"+stack+"')";
                 break;
             case 2:
                 String nameGoods = intent.getStringExtra("query2");
@@ -73,9 +74,9 @@ public class ShowQueryActivity extends AppCompatActivity {
                 break;
             case 6:
                 String stackName = intent.getStringExtra("query6");
-                queryText="select max(goods.length) as Длина, max(goods.height) as Высота, max(goods.width) as Ширина"+
+                queryText="select max(goods.length) as Длина, max(goods.height) as Высота, max(goods.width) as Ширина "+
                         "from goods,stack,place " +
-                        "where stack._id=place.id_stack and goods._id=place.id_goods and  stack.name=\""+stackName+"\"";
+                        "where stack._id=place.id_stack and goods._id=place.id_goods and  stack.name='"+stackName+"'";
                 break;
             case 7:
                 queryText="select stack.name as Название from stack, creator, place " +

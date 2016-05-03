@@ -17,7 +17,7 @@
     <string name="Add">Добавление в таблицу</string>
     <string name="Edit_Data">Редактирование данных</string>
     <string name="Delete_Data">Удаление данных</string>
-    <string name="ConstQuery1">Вывести изготовителей, изделий которых нет на стеллаже №</string>
+    <string name="ConstQuery1">Вывести изготовителей, изделий которых нет на стеллаже: </string>
     <string name="ConstQuery2">Вывести названия стеллажей, на которых нет изделия:</string>
     <string name="ConstQuery3">Вывести названия стеллажей, на которых нет изделий от производителя:</string>
     <string name="ConstQuery4">Вывести производителя, имеющего максимальное количество изделий на складе</string>
